@@ -45,6 +45,8 @@ Then restart the host once (`shutdown -r now`) and watch the VMs pause and carry
 *System → Upgrade* with a newer ISO; if the new version does not come up, the next boot returns to the
 old one.
 
+**More details** (features, tested hardware, documentation, articles): **https://keelos.dev**
+
 ## Licence
 
 keelOS is not open source and is free to use; see https://keelos.dev/about/ for the licence, what keelOS
