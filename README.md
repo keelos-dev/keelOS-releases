@@ -1,7 +1,28 @@
 # keelOS releases
 
-keelOS is a virtualization host for the one server at home or in a small office: the host system is
-upgraded and restarted while the VMs pause for about 25 seconds and carry on.
+## What is keelOS
+
+keelOS is a virtualization host for the one server at home or in a small office: a NAS, a router, a
+Windows desktop and a few Linux servers on one box, each in its own VM. It is built on FreeBSD, bhyve
+and ZFS.
+
+What sets it apart: **restart the host, your VMs carry on.** A small hypervisor (keel, about 100 KB)
+is loaded by UEFI before the host system and holds guest memory and vCPU state. When the host system
+is upgraded and restarted, the VMs pause for about 25 seconds and then carry on where they were: no
+shutdown, no dropped TCP connections. On our development server: 100 host restarts in a row without a
+failure, 17 VMs resumed together after one restart.
+
+- **Passthrough that survives a host restart**: give a whole disk controller or NVMe drive to a NAS
+  VM. GPU passthrough and SR-IOV network functions work too (a VM with a VF is still restarted with the
+  host; keeping it running is in testing).
+- **Windows 11 without workarounds**: virtual TPM 2.0 and Secure Boot; BitLocker works.
+- **ZFS underneath**: VM disks on ZFS, snapshots of the whole guest.
+- **Web page, command line and API**: one program, no database; consoles in the browser and over RDP;
+  English, Chinese and Japanese.
+- **Upgrades with a way back**: two slots on the boot disk; if a new version does not come up, the
+  next boot returns to the old one.
+
+## Links
 
 - Website: https://keelos.dev (English, 中文, 日本語)
 - Status: in development; test releases are published under [Releases](../../releases), with the
