@@ -4,8 +4,8 @@ keelOS is a virtualization host for the one server at home or in a small office:
 upgraded and restarted while the VMs pause for about 25 seconds and carry on.
 
 - Website: https://keelos.dev (English, 中文, 日本語)
-- Status: in development, no public release yet. The first release will appear under
-  [Releases](../../releases), with the SHA-256 of each ISO and release notes.
+- Status: in development; test releases are published under [Releases](../../releases), with the
+  SHA-256 of each ISO and release notes.
 - Get notified: Watch → Custom → Releases, or subscribe to [the feed](../../releases.atom).
 - Bugs, questions, hardware reports: [Issues](../../issues).
 - Requirements: 64-bit Intel CPU with VT-x and EPT (VT-d for passthrough). AMD is not supported yet.
