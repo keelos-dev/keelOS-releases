@@ -29,6 +29,11 @@ https://keelos.dev/quickstart/ ([中文](https://keelos.dev/zh/quickstart/), [�
    forget it). Then *Storage → Make the pool zones*, *Network → Physical ports → Probe*, upload an
    installer under *Storage → ISO images*, and *Virtual machines → New virtual machine*.
 
+**kRDPclient**, the console client for the VMs (Windows), is under *Downloads* in keelOS's web page.
+The zip downloaded there already knows this host: address, certificate and an access token of yours
+(revoke it in the token list if needed), so it connects without setup. It can also forward USB devices
+to a VM. Any other RDP client still reaches a VM's screen.
+
 Then restart the host once (`shutdown -r now`) and watch the VMs pause and carry on. Upgrades:
 *System → Upgrade* with a newer ISO; if the new version does not come up, the next boot returns to the
 old one.
