@@ -10,6 +10,31 @@ upgraded and restarted while the VMs pause for about 25 seconds and carry on.
 - Bugs, questions, hardware reports: [Issues](../../issues).
 - Requirements: 64-bit Intel CPU with VT-x and EPT (VT-d for passthrough). AMD is not supported yet.
 
+## Quickstart
+
+About fifteen minutes from download to the first VM. The full guide with special cases:
+https://keelos.dev/quickstart/ ([中文](https://keelos.dev/zh/quickstart/), [日本語](https://keelos.dev/ja/quickstart/)).
+
+1. **Download** `keelos-VERSION.iso` from [Releases](../../releases) and check it against the `.sha256`
+   next to it. The version is the commit and the build time (UTC): a later time is newer.
+2. **Make a boot stick**: write the ISO to a USB stick of 1 GB or more with
+   [Rufus](https://rufus.ie/) (choose **DD image** mode), balenaEtcher or `dd`. On a server, mount the ISO
+   as the BMC's virtual media instead. Firmware: UEFI boot with CSM/Legacy off, Secure Boot off, VT-x
+   and VT-d on.
+3. **Install**: boot the stick, press Enter to install (or choose *try only* to run from memory and
+   write nothing), pick one disk (512-byte sectors, 4 GiB or more; a disk with data is erased only
+   after you type its name) and a network port, then remove the stick and reboot.
+4. **Set up in the browser**: open the address shown on the console (e.g. `https://192.168.1.10/`) and
+   set the admin password right away (it is root's too; `keel admin reset` on the console if you
+   forget it). Then *Storage → Make the pool zones*, *Network → Physical ports → Probe*, upload an
+   installer under *Storage → ISO images*, and *Virtual machines → New virtual machine*.
+
+Then restart the host once (`shutdown -r now`) and watch the VMs pause and carry on. Upgrades:
+*System → Upgrade* with a newer ISO; if the new version does not come up, the next boot returns to the
+old one.
+
+## Licence
+
 keelOS is not open source and is free to use; see https://keelos.dev/about/ for the licence, what keelOS
 sends over the network (nothing on its own) and how your VMs stay readable without it.
 
