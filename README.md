@@ -34,6 +34,13 @@ The zip downloaded there already knows this host: address, certificate and an ac
 (revoke it in the token list if needed), so it connects without setup. It can also forward USB devices
 to a VM. Any other RDP client still reaches a VM's screen.
 
+**keelagent.exe**, from the same *Downloads* page, is for Windows VMs that have a GPU passed through
+(experimental). Inside the VM it captures the screen and encodes it on the VM's own GPU (H.264), and
+the host only forwards that stream to kRDPclient: smoother video at less CPU. Tick *Channel for a guest
+encoding agent* on the VM's screen settings (takes effect at a cold start), then run keelagent.exe in
+the VM and install it from its window: it adds the IVSHMEM driver and a service, and uninstalls the
+same way. Without it, the host encodes the screen as before.
+
 Then restart the host once (`shutdown -r now`) and watch the VMs pause and carry on. Upgrades:
 *System → Upgrade* with a newer ISO; if the new version does not come up, the next boot returns to the
 old one.
